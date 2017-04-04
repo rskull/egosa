@@ -1,0 +1,23 @@
+[core]
+intervalSec = 360
+count = 15
+
+[twitter]
+consumerKey = ""
+consumerKeySecret = ""
+authKey = ""
+authKeySecret = ""
+searchQuery = ""
+resultType = "recent"
+lang = "ja"
+
+[chatwork]
+apiKey = ""
+roomID = ""
+sendBody = "[info][title]%s@%s[/title]%s\n[hr]%s[/info]\n"
+enable = true
+
+[slack]
+apiKey = ""
+channel = ""
+enable = false

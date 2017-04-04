@@ -1,0 +1,69 @@
+{
+    "memo": "",
+    "projects": [
+        {
+            "name": "github.com/BurntSushi/toml",
+            "branch": "master",
+            "revision": "99064174e013895bbd9b025c31100bd1d9b590ca",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/cenkalti/backoff",
+            "branch": "master",
+            "revision": "8edc80b07f38c27352fb186d971c628a6c32552b",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/dghubble/oauth1",
+            "branch": "master",
+            "revision": "955bdf2cd60166890d532846c81346d01e8a8d35",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/dghubble/sling",
+            "branch": "master",
+            "revision": "52e88a7b75a5db3b49f8911f16d49d9b7b67adc5",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/google/go-querystring",
+            "branch": "master",
+            "revision": "9235644dd9e52eeae6fa48efd539fdc351a0af53",
+            "packages": [
+                "query"
+            ]
+        },
+        {
+            "name": "github.com/rskull/go-twitter",
+            "branch": "master",
+            "revision": "3a2947b91df09aa2b6d6473395d48f163c9c99c8",
+            "packages": [
+                "twitter"
+            ]
+        },
+        {
+            "name": "github.com/yoppi/go-chatwork",
+            "branch": "master",
+            "revision": "e58cac8b16f684ca3b9ed8a009db9f97d238cdb9",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "golang.org/x/net",
+            "branch": "master",
+            "revision": "45e771701b814666a7eb299e6c7a57d0b1799e91",
+            "packages": [
+                "context"
+            ]
+        }
+    ]
+}

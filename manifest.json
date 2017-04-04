@@ -1,0 +1,16 @@
+{
+    "dependencies": {
+        "github.com/BurntSushi/toml": {
+            "branch": "master"
+        },
+        "github.com/dghubble/oauth1": {
+            "branch": "master"
+        },
+        "github.com/rskull/go-twitter": {
+            "branch": "master"
+        },
+        "github.com/yoppi/go-chatwork": {
+            "branch": "master"
+        }
+    }
+}
