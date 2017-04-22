@@ -23,14 +23,14 @@ type SectionTwitter struct {
 }
 
 type SectionChatwork struct {
-	ApiKey   string `toml:"consumerKey"`
+	ApiKey   string `toml:"apiKey"`
 	RoomID   string `toml:"roomID"`
 	SendBody string `toml:"sendBody"`
 	Enable   bool   `toml:"enable"`
 }
 
 type SectionSlack struct {
-	ApiKey  string `toml:"consumerKey"`
+	ApiKey  string `toml:"apiKey"`
 	Channel string `toml:"channel"`
 	Enable  bool   `toml:"enable"`
 }
