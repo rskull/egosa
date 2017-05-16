@@ -9,8 +9,8 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/dghubble/oauth1"
 	"github.com/rskull/egosa/egosa"
+	chatwork "github.com/rskull/go-chatwork"
 	"github.com/rskull/go-twitter/twitter"
-	chatwork "github.com/yoppi/go-chatwork"
 )
 
 const version = "1.0.0"
