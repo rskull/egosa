@@ -34,16 +34,17 @@ func (s *Sender) run() {
 
 	tickChan := time.NewTicker(time.Second * time.Duration(s.conf.Core.IntervalSec)).C
 
+	params := &twitter.SearchTweetsParams{
+		Query:      s.conf.Twitter.SearchQuery,
+		Count:      s.conf.Core.Count,
+		ResultType: s.conf.Twitter.ResultType,
+		Lang:       s.conf.Twitter.Lang,
+		SinceID:    s.sinceId,
+	}
+
 	for {
 		select {
 		case <-tickChan:
-			params := &twitter.SearchTweetsParams{
-				Query:      s.conf.Twitter.SearchQuery,
-				Count:      s.conf.Core.Count,
-				ResultType: s.conf.Twitter.ResultType,
-				Lang:       s.conf.Twitter.Lang,
-				SinceID:    s.sinceId,
-			}
 			tweets, _, err := twitterClient.Searches.Tweets(params)
 
 			if err != nil {
