@@ -8,6 +8,7 @@ consumerKeySecret = ""
 authKey = ""
 authKeySecret = ""
 searchQuery = ""
+IgnoreUsers = [""]
 resultType = "recent"
 lang = "ja"
 

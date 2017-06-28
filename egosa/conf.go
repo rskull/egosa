@@ -1,4 +1,4 @@
-package egosa
+package main
 
 type Config struct {
 	Core     SectionCore     `toml:core`
@@ -13,13 +13,14 @@ type SectionCore struct {
 }
 
 type SectionTwitter struct {
-	ConsumerKey       string `toml:"consumerKey"`
-	ConsumerKeySecret string `toml:"consumerKeySecret"`
-	AuthKey           string `toml:"authKey"`
-	AuthKeySecret     string `toml:"authKeySecret"`
-	SearchQuery       string `toml:"searchQuery"`
-	ResultType        string `toml:"resultType"`
-	Lang              string `toml:"lang"`
+	ConsumerKey       string   `toml:"consumerKey"`
+	ConsumerKeySecret string   `toml:"consumerKeySecret"`
+	AuthKey           string   `toml:"authKey"`
+	AuthKeySecret     string   `toml:"authKeySecret"`
+	SearchQuery       string   `toml:"searchQuery"`
+	IgnoreUsers       []string `toml:ignoreUsers`
+	ResultType        string   `toml:"resultType"`
+	Lang              string   `toml:"lang"`
 }
 
 type SectionChatwork struct {
