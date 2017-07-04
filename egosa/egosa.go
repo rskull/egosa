@@ -11,10 +11,9 @@ import (
 	"github.com/rskull/go-twitter/twitter"
 )
 
-const version = "1.0.0"
+const version = "2.0.1"
 
 type Sender struct {
-	conf          *Config
 	chatClients   *ChatClients
 	twitterClient *twitter.Client
 	sinceId       int64
@@ -29,9 +28,8 @@ func arrayContains(arr []string, str string) bool {
 	return false
 }
 
-func newSender(conf *Config, chatClients *ChatClients, twitterClient *twitter.Client) *Sender {
+func newSender(chatClients *ChatClients, twitterClient *twitter.Client) *Sender {
 	return &Sender{
-		conf:          conf,
 		chatClients:   chatClients,
 		twitterClient: twitterClient,
 	}
@@ -40,10 +38,10 @@ func newSender(conf *Config, chatClients *ChatClients, twitterClient *twitter.Cl
 func (s *Sender) run() {
 
 	params := &twitter.SearchTweetsParams{
-		Query:      s.conf.Twitter.SearchQuery,
-		Count:      s.conf.Core.Count,
-		ResultType: s.conf.Twitter.ResultType,
-		Lang:       s.conf.Twitter.Lang,
+		Query:      ConfEgosa.Twitter.SearchQuery,
+		Count:      ConfEgosa.Core.Count,
+		ResultType: ConfEgosa.Twitter.ResultType,
+		Lang:       ConfEgosa.Twitter.Lang,
 		SinceID:    s.sinceId,
 	}
 
@@ -60,7 +58,7 @@ func (s *Sender) run() {
 	log.Println("Egosa: send tweets")
 
 	for _, tweet := range tweets.Statuses {
-		if arrayContains(s.conf.Twitter.IgnoreUsers, tweet.User.ScreenName) == false {
+		if arrayContains(ConfEgosa.Twitter.IgnoreUsers, tweet.User.ScreenName) == false {
 			s.chatClients.Tweet <- tweet
 		}
 	}
@@ -80,22 +78,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	ConfEgosa = conf
+
 	log.Println("Egosa start")
 
 	// Twitter Client
-	oauthConfig := oauth1.NewConfig(conf.Twitter.ConsumerKey, conf.Twitter.ConsumerKeySecret)
-	token := oauth1.NewToken(conf.Twitter.AuthKey, conf.Twitter.AuthKeySecret)
+	oauthConfig := oauth1.NewConfig(ConfEgosa.Twitter.ConsumerKey, ConfEgosa.Twitter.ConsumerKeySecret)
+	token := oauth1.NewToken(ConfEgosa.Twitter.AuthKey, ConfEgosa.Twitter.AuthKeySecret)
 	httpClient := oauthConfig.Client(oauth1.NoContext, token)
 	twitterClient := twitter.NewClient(httpClient)
 
 	// Chat Clients
-	chatClients := newChatClients(&conf)
+	chatClients := newChatClients()
 
 	// Sender
-	sender := newSender(&conf, chatClients, twitterClient)
+	sender := newSender(chatClients, twitterClient)
 
 	// Timer
-	tickChan := time.NewTicker(time.Second * time.Duration(conf.Core.IntervalSec)).C
+	tickChan := time.NewTicker(time.Second * time.Duration(ConfEgosa.Core.IntervalSec)).C
 
 	go chatClients.run()
 

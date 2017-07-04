@@ -5,16 +5,14 @@ import (
 )
 
 type ChatClients struct {
-	conf    *Config
 	clients []ChatClient
 	Tweet   chan twitter.Tweet
 }
 
-func newChatClients(conf *Config) *ChatClients {
+func newChatClients() *ChatClients {
 	return &ChatClients{
-		conf: conf,
 		clients: []ChatClient{
-			newChatwork(conf),
+			newChatwork(),
 		},
 		Tweet: make(chan twitter.Tweet),
 	}
