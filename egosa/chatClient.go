@@ -7,4 +7,5 @@ import (
 type ChatClient interface {
 	send(message string)
 	makeMessage(tweet twitter.Tweet) string
+	isEnable() bool
 }

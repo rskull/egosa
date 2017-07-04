@@ -27,3 +27,7 @@ func (c *Chatwork) makeMessage(tweet twitter.Tweet) string {
 func (c *Chatwork) send(message string) {
 	c.client.PostRoomMessage(ConfEgosa.Chatwork.RoomID, message)
 }
+
+func (c *Chatwork) isEnable() bool {
+	return ConfEgosa.Chatwork.Enable
+}

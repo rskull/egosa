@@ -24,8 +24,10 @@ func (c *ChatClients) run() {
 		case tweet := <-c.Tweet:
 			go func(tweet twitter.Tweet) {
 				for _, client := range c.clients {
-					message := client.makeMessage(tweet)
-					client.send(message)
+					if client.isEnable() {
+						message := client.makeMessage(tweet)
+						client.send(message)
+					}
 				}
 			}(tweet)
 		}
